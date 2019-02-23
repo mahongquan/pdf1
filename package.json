@@ -1,0 +1,30 @@
+{
+  "name": "A4_Print",
+  "version": "1.0.0",
+  "homepage": ".",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --local --dev",
+    "server": "react-scripts start",
+    "build": "react-scripts build"
+  },
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "~1.8.4"
+  },
+  "dependencies": {
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-pdf": "^4.0.3",
+    "react-scripts": "^1.1.4"
+  }
+}
