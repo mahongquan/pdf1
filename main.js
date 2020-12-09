@@ -45,7 +45,7 @@ ipcMain.on('close', (event, arg) => {
 const devMode = (process.argv || []).indexOf('--local') !== -1;
 let indexUrl;
 if (devMode) {
-  indexUrl = `file://${__dirname}/src/index.html`;
+  indexUrl = `http://localhost:3000`;//file://${__dirname}/src/index.html`;
 } else {
   indexUrl = `file://${__dirname}/build/index.html`;
 }
