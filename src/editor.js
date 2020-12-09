@@ -1,4 +1,4 @@
-import Card from './Card';
+import Card2 from './Card2';
 import { PDFViewer } from '@react-pdf/renderer';
 import React, { Fragment } from 'react';
 import { Document, Page, Text, View, StyleSheet } from '@react-pdf/renderer';
@@ -125,10 +125,7 @@ class A4Lian extends React.Component {
     for (var i = 0; i < this.state.num; i++) {
       let str_start = sprintf('%04d%04d', this.state.year, start);
       pages.push(
-        <Page size="A4" style={styles.page} key={i}>
-          <Card start={str_start} lian="第一联　存根联" />
-          <Card start={str_start} lian="第二联　交款方收执" />
-        </Page>
+          <Card2 key={i} start={str_start}/>
       );
       start += 1;
     }
@@ -141,7 +138,6 @@ class A4Lian extends React.Component {
               <input value={this.state.start} onChange={this.onChange} />
               <label>页数</label>
               <input value={this.state.num} onChange={this.onChange_num} />
-              <button onClick={this.onClick}>打印</button>
             </div>
             <div>
               <label>year</label>
@@ -152,132 +148,6 @@ class A4Lian extends React.Component {
         <PDFViewer style={{ width: '100vw', height: '100vh' }}>
           <Document>{pages}</Document>
         </PDFViewer>
-        <style jsx="true">
-          {`
-            .only_screen {
-              width: 100%;
-              top: 0px;
-              left: 0px;
-              background-color: #aaa;
-            }
-            .line_input {
-              border: none;
-              border-bottom: 1px solid #000;
-            }
-            @page {
-              margin: 0;
-            }
-            body {
-              margin: 0px 0px 0px 0px;
-            }
-            .sheet {
-              margin: 0;
-              overflow: hidden;
-              position: relative;
-              box-sizing: border-box;
-              page-break-after: always;
-            }
-
-            /** Paper sizes **/
-            .A3 .sheet {
-              width: 297mm;
-              height: 419mm;
-            }
-            .A3.landscape .sheet {
-              width: 420mm;
-              height: 296mm;
-            }
-            .A4 .sheet {
-              width: 210mm;
-              height: 296mm;
-            }
-            .A4.landscape .sheet {
-              width: 297mm;
-              height: 209mm;
-            }
-            .A5 .sheet {
-              width: 148mm;
-              height: 209mm;
-            }
-            .A5.landscape .sheet {
-              width: 210mm;
-              height: 147mm;
-            }
-            .letter .sheet {
-              width: 216mm;
-              height: 279mm;
-            }
-            .letter.landscape .sheet {
-              width: 280mm;
-              height: 215mm;
-            }
-            .legal .sheet {
-              width: 216mm;
-              height: 356mm;
-            }
-            .legal.landscape .sheet {
-              width: 357mm;
-              height: 215mm;
-            }
-
-            /** Padding area **/
-            .sheet.padding-10mm {
-              padding: 10mm;
-            }
-            .sheet.padding-15mm {
-              padding: 15mm;
-            }
-            .sheet.padding-20mm {
-              padding: 20mm;
-            }
-            .sheet.padding-25mm {
-              padding: 25mm;
-            }
-
-            /** For screen preview **/
-            @media screen {
-              body {
-                background: #e0e0e0;
-              }
-              .sheet {
-                background: white;
-                box-shadow: 0 0.5mm 2mm rgba(0, 0, 0, 0.3);
-                margin: 5mm auto;
-              }
-            }
-
-            /** Fix for Chrome issue #273306 **/
-            @media print {
-              .only_screen {
-                display: none;
-              }
-              .A3.landscape {
-                width: 420mm;
-              }
-              .A3,
-              .A4.landscape {
-                width: 297mm;
-              }
-              .A4,
-              .A5.landscape {
-                width: 210mm;
-              }
-              .A5 {
-                width: 148mm;
-              }
-              .letter,
-              .legal {
-                width: 216mm;
-              }
-              .letter.landscape {
-                width: 280mm;
-              }
-              .legal.landscape {
-                width: 357mm;
-              }
-            }
-          `}
-        </style>
       </div>
     );
   }
